@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		68CD69F62443F5E500A66F66 /* ContactTracing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CD69F32443F5E500A66F66 /* ContactTracing.swift */; };
+		68DFFF9D244518F400DEA07F /* CTStub.m in Sources */ = {isa = PBXBuildFile; fileRef = 68DFFF9C244518F400DEA07F /* CTStub.m */; };
 		B3E7B58A1CC2AC0600A0062D /* ContactTracing.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* ContactTracing.m */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +28,8 @@
 		134814201AA4EA6300B7C361 /* libContactTracing.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libContactTracing.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		68CD69F02443F5E500A66F66 /* ContactTracing-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ContactTracing-Bridging-Header.h"; sourceTree = "<group>"; };
 		68CD69F32443F5E500A66F66 /* ContactTracing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactTracing.swift; sourceTree = "<group>"; };
+		68DFFF97244514B500DEA07F /* CTStub.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTStub.h; sourceTree = "<group>"; };
+		68DFFF9C244518F400DEA07F /* CTStub.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTStub.m; sourceTree = "<group>"; };
 		B3E7B5891CC2AC0600A0062D /* ContactTracing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactTracing.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -52,6 +55,8 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
+				68DFFF97244514B500DEA07F /* CTStub.h */,
+				68DFFF9C244518F400DEA07F /* CTStub.m */,
 				68CD69F02443F5E500A66F66 /* ContactTracing-Bridging-Header.h */,
 				B3E7B5891CC2AC0600A0062D /* ContactTracing.m */,
 				68CD69F32443F5E500A66F66 /* ContactTracing.swift */,
@@ -117,6 +122,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68DFFF9D244518F400DEA07F /* CTStub.m in Sources */,
 				68CD69F62443F5E500A66F66 /* ContactTracing.swift in Sources */,
 				B3E7B58A1CC2AC0600A0062D /* ContactTracing.m in Sources */,
 			);

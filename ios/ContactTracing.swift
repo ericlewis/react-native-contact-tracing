@@ -1,5 +1,4 @@
 import Foundation
-import ContactTracing
 
 @objc(ContactTracing)
 public class ContactTracing: RCTEventEmitter {
@@ -65,8 +64,8 @@ public class ContactTracing: RCTEventEmitter {
     }
     
     @objc
-    func start(_ resolve: RCTPromiseResolveBlock,
-               reject: RCTPromiseRejectBlock) {
+    func start(_ resolve: @escaping RCTPromiseResolveBlock,
+               reject: @escaping RCTPromiseRejectBlock) {
         guard state != .on else { return }
         
         let getRequest = CTStateGetRequest()
@@ -86,7 +85,7 @@ public class ContactTracing: RCTEventEmitter {
                 guard error != nil else { return reject(Self.errorKey, "TODO", error) }
                 self.state = setRequest.state
                 self.currentSession = CTExposureDetectionSession()
-                resolve()
+                resolve(nil)
             }
         }
         
@@ -94,8 +93,8 @@ public class ContactTracing: RCTEventEmitter {
     }
     
     @objc
-    func stop(_ resolve: RCTPromiseResolveBlock,
-              reject: RCTPromiseRejectBlock) {
+    func stop(_ resolve: @escaping RCTPromiseResolveBlock,
+              reject: @escaping RCTPromiseRejectBlock) {
         guard state != .off else { return }
         
         let setRequest = CTStateSetRequest()
@@ -107,15 +106,15 @@ public class ContactTracing: RCTEventEmitter {
             guard error != nil else { return reject(Self.errorKey, "TODO", error) }
             self.state = setRequest.state
             self.currentSession = nil
-            resolve()
+            resolve(nil)
         }
         
         self.currentSetRequest = setRequest
     }
     
     @objc
-    func requestExposureSummary(_ resolve: RCTPromiseResolveBlock,
-                                reject: RCTPromiseRejectBlock) {
+    func requestExposureSummary(_ resolve: @escaping RCTPromiseResolveBlock,
+                                reject: @escaping RCTPromiseRejectBlock) {
         guard authorized, let session = currentSession else { return }
         
         let selfTracingInfoRequest = CTSelfTracingInfoRequest()

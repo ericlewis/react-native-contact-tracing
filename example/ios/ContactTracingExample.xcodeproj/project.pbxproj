@@ -11,6 +11,7 @@
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		68DFFF9B2445174600DEA07F /* stub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DFFF9A2445174600DEA07F /* stub.swift */; };
 		A5810B99A21C3469288EB29A /* libPods-ContactTracingExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A53AA7860852BA2A55871524 /* libPods-ContactTracingExample.a */; };
 		ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED297162215061F000B7C4FE /* JavaScriptCore.framework */; };
 /* End PBXBuildFile section */
@@ -28,6 +29,7 @@
 		241A0452ABCCE23C288D1DB5 /* Pods-ContactTracingExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ContactTracingExample.debug.xcconfig"; path = "Target Support Files/Pods-ContactTracingExample/Pods-ContactTracingExample.debug.xcconfig"; sourceTree = "<group>"; };
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		68DFFF94244510C100DEA07F /* ContactTracingExample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ContactTracingExample-Bridging-Header.h"; sourceTree = "<group>"; };
+		68DFFF9A2445174600DEA07F /* stub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = stub.swift; sourceTree = "<group>"; };
 		A53AA7860852BA2A55871524 /* libPods-ContactTracingExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ContactTracingExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
@@ -56,6 +58,7 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				68DFFF9A2445174600DEA07F /* stub.swift */,
 				68DFFF94244510C100DEA07F /* ContactTracingExample-Bridging-Header.h */,
 			);
 			name = ContactTracingExample;
@@ -78,7 +81,6 @@
 				241A0452ABCCE23C288D1DB5 /* Pods-ContactTracingExample.debug.xcconfig */,
 				1275E8755BEB35D671046615 /* Pods-ContactTracingExample.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -215,6 +217,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
+				68DFFF9B2445174600DEA07F /* stub.swift in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
