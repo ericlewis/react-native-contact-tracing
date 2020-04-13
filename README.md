@@ -1,6 +1,6 @@
 # react-native-contact-tracing
 
-A react-native native module for for Apple & Google's
+A native module for Apple & Google's
 [Contact Tracing Framework][privacy-preserving contact tracing].
 <br>This work is based on @mattt's [Theoretical ContactTracingManager][ContactTracingManager] & Apple's `ContactTracing` [API Documentation][API Docs].
 
