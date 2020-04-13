@@ -127,11 +127,12 @@ public class ContactTracing: RCTEventEmitter {
                     guard let summary = summary else { return }
                     
                     self.sendEvent(withName: Self.exposureDetectionSummaryReceived,
-                                   body: summary)
+                                   body: summary.matchedKeyCount)
                     
                     session.getContactInfo { (contactInfo, error) in
                         guard error != nil else { return /* handle error */ }
-                        guard let contactInfo = contactInfo else { return }
+                        guard let contactInfo = contactInfo?.map({ ["duration": $0.duration, "timestamp": $0.timestamp] })
+                        else { return }
                         
                         self.sendEvent(withName: Self.contactInformationReceived,
                                        body: contactInfo)
