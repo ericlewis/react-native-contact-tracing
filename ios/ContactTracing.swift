@@ -25,7 +25,7 @@ public class ContactTracing: RCTEventEmitter {
     }
     
     public override func constantsToExport() -> [AnyHashable : Any]! {
-        [:]
+        ["supported": true] // this is basically always true, the limit is based on iOS version.
     }
     
     @objc
