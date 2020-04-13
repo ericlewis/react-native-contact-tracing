@@ -2,10 +2,14 @@ import Foundation
 
 @objc(ContactTracing)
 public class ContactTracing: RCTEventEmitter {
+    
+    /// Events
     static let exposureDetectionSummaryReceived = "exposureDetectionSummaryReceived"
     static let contactInformationReceived = "contactInformationReceived"
     static let stateDidChange = "stateDidChange"
     static let authorizationDidChange = "authorizationDidChange"
+    static let onError = "onError"
+    
     static let errorKey = "CT_ERROR"
 
     private var dispatchQueue: DispatchQueue = DispatchQueue(label: "com.ericlewis.react-native-contact-tracing")
@@ -57,7 +61,10 @@ public class ContactTracing: RCTEventEmitter {
         didSet {
             guard let session = currentSession else { return }
             session.activate { (error) in
-                guard error != nil else { return /* handle error */ }
+                guard error != nil else {
+                    self.sendEvent(withName: Self.onError, body: error?.localizedDescription)
+                    return
+                }
                 self.authorized = true
             }
         }
