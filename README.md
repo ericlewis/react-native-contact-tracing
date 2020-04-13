@@ -1,5 +1,7 @@
 # react-native-contact-tracing
 
+:warning: I do not own the `react-native-contact-tracing` package on npm. My package will remain unpublished until the official frameworks are released. The current owner of `react-native-contact-tracing` has a boilerplate project published to it and is in no way related to this repository. Until I can contact the owner of the package or find a better name: **do not install this package from the directions below, they are placeholders only.**
+
 A native module for Apple & Google's
 [Contact Tracing Framework][privacy-preserving contact tracing].
 <br><br>This work is based on [mattt's](https://github.com/mattt) theoretical [ContactTracingManager][ContactTracingManager], Apple's `ContactTracing` [API Documentation][API Docs] & Google's [Android API Docs][Android API Docs].
