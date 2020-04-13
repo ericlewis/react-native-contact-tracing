@@ -19,8 +19,7 @@
     "name": "Eric Lewis",
     "email": "ericlewis777@gmail.com"
   },
-  "license": "MIT",
-  "licenseFilename": "LICENSE",
+  "license": "UNLICENSED",
   "readmeFilename": "README.md",
   "peerDependencies": {
     "react": "^16.8.1",

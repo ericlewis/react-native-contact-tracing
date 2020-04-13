@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
                   react-native-contact-tracing
                    DESC
   s.homepage     = "https://github.com/github_account/react-native-contact-tracing"
-  s.license      = "MIT"
+  s.license      = "UNLICENSED"
   s.authors      = { "Eric Lewis" => "ericlewis777@gmail.com" }
   s.platforms    = { :ios => "13.4" }
   s.source       = { :git => "https://github.com/github_account/react-native-contact-tracing.git", :tag => "#{s.version}" }
