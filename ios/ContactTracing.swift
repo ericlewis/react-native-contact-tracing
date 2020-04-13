@@ -32,7 +32,7 @@ public class ContactTracing: RCTEventEmitter {
         didSet {
             guard oldValue != state else { return }
             self.sendEvent(withName: Self.stateDidChange,
-                           body: state)
+                           body: state.rawValue)
         }
     }
     
