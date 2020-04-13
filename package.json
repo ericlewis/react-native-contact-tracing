@@ -5,7 +5,9 @@
   "description": "React-native module for Apple & Google's Contact Tracing Framework",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "start:android": "react-native run-android --root example/",
+    "start:ios": "react-native run-ios --project-path example/ios"
   },
   "repository": {
     "type": "git",
