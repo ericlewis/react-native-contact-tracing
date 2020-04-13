@@ -64,7 +64,8 @@ public class ContactTracing: RCTEventEmitter {
     }
     
     @objc
-    func start() {
+    func start(_ resolve: RCTPromiseResolveBlock,
+               reject: RCTPromiseRejectBlock) {
         guard state != .on else { return }
         
         let getRequest = CTStateGetRequest()
@@ -72,7 +73,7 @@ public class ContactTracing: RCTEventEmitter {
         defer { getRequest.perform() }
         
         getRequest.completionHandler = { error in
-            guard error != nil else { return /* handle error */ }
+            guard error != nil else { return reject("ERROR", "TODO", error) }
             self.state = getRequest.state
             
             let setRequest = CTStateSetRequest()
@@ -81,9 +82,10 @@ public class ContactTracing: RCTEventEmitter {
             
             setRequest.state = .on
             setRequest.completionHandler = { error in
-                guard error != nil else { return /* handle error */ }
+                guard error != nil else { return reject("ERROR", "TODO", error) }
                 self.state = setRequest.state
                 self.currentSession = CTExposureDetectionSession()
+                resolve()
             }
         }
         
@@ -91,7 +93,8 @@ public class ContactTracing: RCTEventEmitter {
     }
     
     @objc
-    func stop() {
+    func stop(_ resolve: RCTPromiseResolveBlock,
+              reject: RCTPromiseRejectBlock) {
         guard state != .off else { return }
         
         let setRequest = CTStateSetRequest()
@@ -100,42 +103,46 @@ public class ContactTracing: RCTEventEmitter {
         
         setRequest.state = .off
         setRequest.completionHandler = { error in
-            guard error != nil else { return /* handle error */ }
+            guard error != nil else { return reject("ERROR", "TODO", error) }
             self.state = setRequest.state
             self.currentSession = nil
+            resolve()
         }
         
         self.currentSetRequest = setRequest
     }
     
     @objc
-    func requestExposureSummary() {
+    func requestExposureSummary(_ resolve: RCTPromiseResolveBlock,
+                                reject: RCTPromiseRejectBlock) {
         guard authorized, let session = currentSession else { return }
         
         let selfTracingInfoRequest = CTSelfTracingInfoRequest()
         selfTracingInfoRequest.dispatchQueue = self.dispatchQueue
         
         selfTracingInfoRequest.completionHandler = { (tracingInfo, error) in
-            guard error != nil else { return /* handle error */ }
+            guard error != nil else { return reject("ERROR", "TODO", error) }
             guard let dailyTracingKeys = tracingInfo?.dailyTracingKeys else { return }
             
             session.addPositiveDiagnosisKeys(batching: dailyTracingKeys) { (error) in
-                guard error != nil else { return /* handle error */ }
-                
+                guard error != nil else { return reject("ERROR", "TODO", error) }
+
                 session.finishedPositiveDiagnosisKeys { (summary, error) in
-                    guard error != nil else { return /* handle error */ }
+                    guard error != nil else { return reject("ERROR", "TODO", error) }
                     guard let summary = summary else { return }
                     
                     self.sendEvent(withName: Self.exposureDetectionSummaryReceived,
                                    body: summary.matchedKeyCount)
                     
                     session.getContactInfo { (contactInfo, error) in
-                        guard error != nil else { return /* handle error */ }
+                        guard error != nil else { return reject("ERROR", "TODO", error) }
                         guard let contactInfo = contactInfo?.map({ ["duration": $0.duration, "timestamp": $0.timestamp] })
                         else { return }
                         
                         self.sendEvent(withName: Self.contactInformationReceived,
                                        body: contactInfo)
+                        
+                        resolve()
                     }
                 }
             }
