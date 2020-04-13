@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {useEffect} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -7,15 +7,18 @@ import {
 
 import ContactTracing from '../'
 
-export default class App extends Component {
-  render() {
-    return (
-      <SafeAreaView style={styles.container}>
-        <Text>Supported: {JSON.stringify(ContactTracing.getConstants()["supported"])}</Text>
-      </SafeAreaView>
-    );
-  }
+export default () => {
+  useEffect(() => {
+    ContactTracing.start();
+  }, []);
+
+  return (
+    <SafeAreaView style={styles.container}>
+      <Text>Supported: {JSON.stringify(ContactTracing.getConstants()["supported"])}</Text>
+    </SafeAreaView>
+  )
 }
+
 
 const styles = StyleSheet.create({
   container: {
