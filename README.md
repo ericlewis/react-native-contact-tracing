@@ -39,30 +39,30 @@ contactTracing.start();
 #### `start()`
 
 ```javascript
-contactTracing.start();
+await contactTracing.start();
 ```
 
-Begin contact tracing, asking for permissions if need be.
+Begin contact tracing, asking for permissions if need be. This returns a promise that resolves if tracing began successfully.
 
 ---
 
 #### `stop()`
 
 ```javascript
-contactTracing.stop();
+await contactTracing.stop();
 ```
 
-Stops contact tracing.
+Stops contact tracing, this also returns a promise that resolves if tracing ended successfully.
 
 ---
 
 #### `requestExposureSummary()`
 
 ```javascript
-contactTracing.requestExposureSummary();
+const { matchedKeyCount, contactInformation } = await contactTracing.requestExposureSummary();
 ```
 
-Provides a summary on exposures, listen for the `receivedExposureDetectionSummary` event.
+Provides a summary on exposures. This returns a promise that resolves to an object containing the matchedKeyCount & an array of CTContactInfo objects.
 
 ---
 
