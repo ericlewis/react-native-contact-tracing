@@ -19,7 +19,8 @@ public class ContactTracing: RCTEventEmitter {
             Self.exposureDetectionSummaryReceived,
             Self.contactInformationReceived,
             Self.stateDidChange,
-            Self.authorizationDidChange
+            Self.authorizationDidChange,
+            Self.onError
         ]
     }
     
