@@ -15,18 +15,57 @@ A native module for Apple & Google's
 `$ react-native link react-native-contact-tracing`
 
 ## Usage
+
+### Example
+
 ```javascript
 import ContactTracing from 'react-native-contact-tracing';
 
-// Begin contact tracing
 contactTracing.start();
+```
 
-// End contact tracing
+## Methods
+
+### Summary
+
+* [`start`](#start)
+* [`stop`](#stop)
+* [`requestExposureSummary`](#requestexposuresummary)
+
+---
+
+### Details
+
+#### `start()`
+
+```javascript
+contactTracing.start();
+```
+
+Begin contact tracing, asking for permissions if need be.
+
+---
+
+#### `stop()`
+
+```javascript
 contactTracing.stop();
+```
 
-// Request Exposure Summary (received on event)
+Stops contact tracing.
+
+---
+
+#### `requestExposureSummary()`
+
+```javascript
 contactTracing.requestExposureSummary();
 ```
+
+Provides a summary on exposures, listen for the `receivedExposureDetectionSummary` event.
+
+---
+
 
 ## License
 
