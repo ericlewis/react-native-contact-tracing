@@ -3,19 +3,19 @@ import ContactTracing
 
 @objc(ContactTracingManager)
 public class ContactTracingManager: RCTEventEmitter {
-    static let onReceiveExposureDetectionSummaryEvent = "onReceiveExposureDetectionSummary"
-    static let onReceiveContactInformationEvent = "onReceiveContactInformation"
-    static let onChangeStateEvent = "onChangeState"
-    static let onChangeAuthorizationEvent = "onChangeAuthorization"
+    static let receivedExposureDetectionSummary = "receivedExposureDetectionSummary"
+    static let receivedContactInformation = "receivedContactInformation"
+    static let stateDidChange = "stateDidChange"
+    static let authorizationDidChange = "authorizationDidChange"
 
     private var dispatchQueue: DispatchQueue = DispatchQueue(label: "com.ericlewis.react-native-contact-tracing")
     
     public override func supportedEvents() -> [String]! {
         [
-            Self.onReceiveExposureDetectionSummaryEvent,
-            Self.onReceiveContactInformationEvent,
-            Self.onChangeStateEvent,
-            Self.onChangeAuthorizationEvent
+            Self.receivedExposureDetectionSummary,
+            Self.receivedContactInformation,
+            Self.stateDidChange,
+            Self.authorizationDidChange
         ]
     }
     
@@ -31,7 +31,7 @@ public class ContactTracingManager: RCTEventEmitter {
     private(set) var state: CTManagerState = .unknown {
         didSet {
             guard oldValue != state else { return }
-            self.sendEvent(withName: Self.onChangeStateEvent,
+            self.sendEvent(withName: Self.stateDidChange,
                            body: state)
         }
     }
@@ -39,7 +39,7 @@ public class ContactTracingManager: RCTEventEmitter {
     private(set) var authorized: Bool = false {
         didSet {
             guard oldValue != authorized else { return }
-            self.sendEvent(withName: Self.onChangeAuthorizationEvent,
+            self.sendEvent(withName: Self.authorizationDidChange,
                            body: authorized)
         }
     }
@@ -126,14 +126,14 @@ public class ContactTracingManager: RCTEventEmitter {
                     guard error != nil else { return /* handle error */ }
                     guard let summary = summary else { return }
                     
-                    self.sendEvent(withName: Self.onReceiveExposureDetectionSummaryEvent,
+                    self.sendEvent(withName: Self.receivedExposureDetectionSummary,
                                    body: summary)
                     
                     session.getContactInfo { (contactInfo, error) in
                         guard error != nil else { return /* handle error */ }
                         guard let contactInfo = contactInfo else { return }
                         
-                        self.sendEvent(withName: Self.onReceiveContactInformationEvent,
+                        self.sendEvent(withName: Self.receivedContactInformation,
                                        body: contactInfo)
                     }
                 }
