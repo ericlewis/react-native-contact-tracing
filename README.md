@@ -2,7 +2,7 @@
 
 A native module for Apple & Google's
 [Contact Tracing Framework][privacy-preserving contact tracing].
-<br>This work is based on @mattt's theoretical [ContactTracingManager][ContactTracingManager], Apple's `ContactTracing` [API Documentation][API Docs] & Google's [Android API Docs][Android API Docs].
+<br>This work is based on [mattt's](https://github.com/mattt) theoretical [ContactTracingManager][ContactTracingManager], Apple's `ContactTracing` [API Documentation][API Docs] & Google's [Android API Docs][Android API Docs].
 
 **Help welcome for Android! see issue #1**
 
