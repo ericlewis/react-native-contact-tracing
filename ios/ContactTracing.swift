@@ -64,7 +64,7 @@ public class ContactTracing: RCTEventEmitter {
     }
     
     @objc
-    func startContactTracing() {
+    func start() {
         guard state != .on else { return }
         
         let getRequest = CTStateGetRequest()
@@ -91,7 +91,7 @@ public class ContactTracing: RCTEventEmitter {
     }
     
     @objc
-    func stopContactTracing() {
+    func stop() {
         guard state != .off else { return }
         
         let setRequest = CTStateSetRequest()
