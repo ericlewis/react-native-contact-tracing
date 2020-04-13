@@ -1,5 +1,5 @@
 {
-  "name": "react-native-contacttracing",
+  "name": "react-native-contact-tracing",
   "title": "React Native Contact Tracing",
   "version": "1.0.0",
   "description": "React-native module for Apple & Google's Contact Tracing Framework",

@@ -8,7 +8,7 @@ public class ContactTracing: RCTEventEmitter {
     static let stateDidChange = "stateDidChange"
     static let authorizationDidChange = "authorizationDidChange"
 
-    private var dispatchQueue: DispatchQueue = DispatchQueue(label: "com.ericlewis.react-native-contacttracing")
+    private var dispatchQueue: DispatchQueue = DispatchQueue(label: "com.ericlewis.react-native-contact-tracing")
     
     public override func supportedEvents() -> [String]! {
         [
