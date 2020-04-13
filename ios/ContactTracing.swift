@@ -7,7 +7,7 @@ public class ContactTracing: RCTEventEmitter {
     static let contactInformationReceived = "contactInformationReceived"
     static let stateDidChange = "stateDidChange"
     static let authorizationDidChange = "authorizationDidChange"
-    static let errorKey = "E_CONTACT_TRACING"
+    static let errorKey = "E_ERROR"
 
     private var dispatchQueue: DispatchQueue = DispatchQueue(label: "com.ericlewis.react-native-contact-tracing")
     
