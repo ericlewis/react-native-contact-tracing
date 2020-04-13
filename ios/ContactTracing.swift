@@ -7,6 +7,7 @@ public class ContactTracing: RCTEventEmitter {
     static let contactInformationReceived = "contactInformationReceived"
     static let stateDidChange = "stateDidChange"
     static let authorizationDidChange = "authorizationDidChange"
+    static let errorKey = "E_CONTACT_TRACING"
 
     private var dispatchQueue: DispatchQueue = DispatchQueue(label: "com.ericlewis.react-native-contact-tracing")
     
@@ -73,7 +74,7 @@ public class ContactTracing: RCTEventEmitter {
         defer { getRequest.perform() }
         
         getRequest.completionHandler = { error in
-            guard error != nil else { return reject("ERROR", "TODO", error) }
+            guard error != nil else { return reject(Self.errorKey, "TODO", error) }
             self.state = getRequest.state
             
             let setRequest = CTStateSetRequest()
@@ -82,7 +83,7 @@ public class ContactTracing: RCTEventEmitter {
             
             setRequest.state = .on
             setRequest.completionHandler = { error in
-                guard error != nil else { return reject("ERROR", "TODO", error) }
+                guard error != nil else { return reject(Self.errorKey, "TODO", error) }
                 self.state = setRequest.state
                 self.currentSession = CTExposureDetectionSession()
                 resolve()
@@ -103,7 +104,7 @@ public class ContactTracing: RCTEventEmitter {
         
         setRequest.state = .off
         setRequest.completionHandler = { error in
-            guard error != nil else { return reject("ERROR", "TODO", error) }
+            guard error != nil else { return reject(Self.errorKey, "TODO", error) }
             self.state = setRequest.state
             self.currentSession = nil
             resolve()
@@ -121,21 +122,21 @@ public class ContactTracing: RCTEventEmitter {
         selfTracingInfoRequest.dispatchQueue = self.dispatchQueue
         
         selfTracingInfoRequest.completionHandler = { (tracingInfo, error) in
-            guard error != nil else { return reject("ERROR", "TODO", error) }
+            guard error != nil else { return reject(Self.errorKey, "TODO", error) }
             guard let dailyTracingKeys = tracingInfo?.dailyTracingKeys else { return }
             
             session.addPositiveDiagnosisKeys(batching: dailyTracingKeys) { (error) in
-                guard error != nil else { return reject("ERROR", "TODO", error) }
+                guard error != nil else { return reject(Self.errorKey, "TODO", error) }
 
                 session.finishedPositiveDiagnosisKeys { (summary, error) in
-                    guard error != nil else { return reject("ERROR", "TODO", error) }
+                    guard error != nil else { return reject(Self.errorKey, "TODO", error) }
                     guard let summary = summary else { return }
                     
                     self.sendEvent(withName: Self.exposureDetectionSummaryReceived,
                                    body: summary.matchedKeyCount)
                     
                     session.getContactInfo { (contactInfo, error) in
-                        guard error != nil else { return reject("ERROR", "TODO", error) }
+                        guard error != nil else { return reject(Self.errorKey, "TODO", error) }
                         guard let contactInfo = contactInfo?.map({ ["duration": $0.duration, "timestamp": $0.timestamp] })
                         else { return }
                         
