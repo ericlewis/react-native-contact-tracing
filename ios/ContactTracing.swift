@@ -1,8 +1,8 @@
 import Foundation
 import ContactTracing
 
-@objc(ContactTracingManager)
-public class ContactTracingManager: RCTEventEmitter {
+@objc(ContactTracing)
+public class ContactTracing: RCTEventEmitter {
     static let receivedExposureDetectionSummary = "receivedExposureDetectionSummary"
     static let receivedContactInformation = "receivedContactInformation"
     static let stateDidChange = "stateDidChange"
