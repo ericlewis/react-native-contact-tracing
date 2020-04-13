@@ -33,6 +33,7 @@ contactTracing.start();
 * [`start`](#start)
 * [`stop`](#stop)
 * [`requestExposureSummary`](#requestexposuresummary)
+* [`currentStatus`](#currentstatus)
 
 ---
 
@@ -68,6 +69,15 @@ Provides a summary on exposures. This returns a promise that resolves to an obje
 
 ---
 
+#### `currentStatus()`
+
+```javascript
+const status = await contactTracing.currentStatus();
+```
+
+This returns a promise that resolves to the current tracing status. The value is an integer.
+
+---
 
 ## License
 

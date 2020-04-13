@@ -156,6 +156,12 @@ public class ContactTracing: RCTEventEmitter {
             }
         }
     }
+    
+    @objc
+    func currentStatus(_ resolve: @escaping RCTPromiseResolveBlock,
+                       reject: @escaping RCTPromiseRejectBlock) {
+        resolve(state.rawValue)
+    }
 }
 
 extension CTExposureDetectionSession {

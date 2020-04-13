@@ -12,4 +12,7 @@ RCT_EXTERN_METHOD(stop:(RCTPromiseResolveBlock)resolve
 RCT_EXTERN_METHOD(requestExposureSummary:(RCTPromiseResolveBlock)resolve
                   reject:(RCTPromiseRejectBlock)reject)
 
+RCT_EXTERN_METHOD(currentStatus:(RCTPromiseResolveBlock)resolve
+                  reject:(RCTPromiseRejectBlock)reject)
+
 @end
