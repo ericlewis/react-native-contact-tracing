@@ -15,6 +15,15 @@ A react-native native module for for Apple & Google's
 ## Usage
 ```javascript
 import ContactTracing from 'react-native-contact-tracing';
+
+// Begin contact tracing
+contactTracing.start();
+
+// End contact tracing
+contactTracing.stop();
+
+// Request Exposure Summary (received on event)
+contactTracing.requestExposureSummary();
 ```
 
 ## License
