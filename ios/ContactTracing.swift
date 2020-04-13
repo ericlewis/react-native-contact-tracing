@@ -3,8 +3,8 @@ import ContactTracing
 
 @objc(ContactTracing)
 public class ContactTracing: RCTEventEmitter {
-    static let receivedExposureDetectionSummary = "receivedExposureDetectionSummary"
-    static let receivedContactInformation = "receivedContactInformation"
+    static let exposureDetectionSummaryReceived = "exposureDetectionSummaryReceived"
+    static let contactInformationReceived = "contactInformationReceived"
     static let stateDidChange = "stateDidChange"
     static let authorizationDidChange = "authorizationDidChange"
 
@@ -12,8 +12,8 @@ public class ContactTracing: RCTEventEmitter {
     
     public override func supportedEvents() -> [String]! {
         [
-            Self.receivedExposureDetectionSummary,
-            Self.receivedContactInformation,
+            Self.exposureDetectionSummaryReceived,
+            Self.contactInformationReceived,
             Self.stateDidChange,
             Self.authorizationDidChange
         ]
@@ -126,14 +126,14 @@ public class ContactTracing: RCTEventEmitter {
                     guard error != nil else { return /* handle error */ }
                     guard let summary = summary else { return }
                     
-                    self.sendEvent(withName: Self.receivedExposureDetectionSummary,
+                    self.sendEvent(withName: Self.exposureDetectionSummaryReceived,
                                    body: summary)
                     
                     session.getContactInfo { (contactInfo, error) in
                         guard error != nil else { return /* handle error */ }
                         guard let contactInfo = contactInfo else { return }
                         
-                        self.sendEvent(withName: Self.receivedContactInformation,
+                        self.sendEvent(withName: Self.contactInformationReceived,
                                        body: contactInfo)
                     }
                 }
