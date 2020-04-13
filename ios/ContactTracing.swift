@@ -9,6 +9,7 @@ public class ContactTracing: RCTEventEmitter {
     static let stateDidChange = "stateDidChange"
     static let authorizationDidChange = "authorizationDidChange"
     static let onError = "onError"
+    static let onExposure = "onExposure"
     
     static let errorKey = "CT_ERROR"
 
@@ -20,7 +21,8 @@ public class ContactTracing: RCTEventEmitter {
             Self.contactInformationReceived,
             Self.stateDidChange,
             Self.authorizationDidChange,
-            Self.onError
+            Self.onError,
+            Self.onExposure
         ]
     }
     
@@ -141,6 +143,11 @@ public class ContactTracing: RCTEventEmitter {
                     
                     self.sendEvent(withName: Self.exposureDetectionSummaryReceived,
                                    body: summary.matchedKeyCount)
+                    
+                    if summary.matchedKeyCount > 0 {
+                        self.sendEvent(withName: Self.onExposure,
+                                       body: nil)
+                    }
                     
                     session.getContactInfo { (contactInfo, error) in
                         guard error != nil else { return reject(Self.errorKey, "getContactInfo", error) }
