@@ -1,4 +1,4 @@
-# react-native-contact-tracing
+# react-native-contacttracing
 
 A native module for Apple & Google's
 [Contact Tracing Framework][privacy-preserving contact tracing].
@@ -6,15 +6,15 @@ A native module for Apple & Google's
 
 ## Getting started
 
-`$ npm install react-native-contact-tracing --save`
+`$ npm install react-native-contacttracing --save`
 
 ### Mostly automatic installation
 
-`$ react-native link react-native-contact-tracing`
+`$ react-native link react-native-contacttracing`
 
 ## Usage
 ```javascript
-import ContactTracing from 'react-native-contact-tracing';
+import ContactTracing from 'react-native-contacttracing';
 
 // Begin contact tracing
 contactTracing.start();
