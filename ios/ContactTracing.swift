@@ -142,7 +142,7 @@ public class ContactTracing: RCTEventEmitter {
                         self.sendEvent(withName: Self.contactInformationReceived,
                                        body: contactInfo)
                         
-                        resolve()
+                        resolve(["matchedKeyCount": summary.matchedKeyCount, "contactInformation": contactInfo])
                     }
                 }
             }
