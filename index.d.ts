@@ -15,11 +15,17 @@ export interface IExposureSummary {
     contactInformation: IContactInfo[];
 }
 
+export enum ContactTracingStatus {
+    UNKNOWN,
+    ON,
+    OFF
+}
+
 export interface IContactTracing {
     getConstants(): { supported: boolean };
     start(): Promise<void>;
     stop(): Promise<void>;
-    currentStatus(): Promise<number>;
+    currentStatus(): Promise<ContactTracingStatus>;
     requestExposureSummary(): Promise<IExposureSummary>;
 }
 

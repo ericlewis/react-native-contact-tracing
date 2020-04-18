@@ -7,10 +7,10 @@ import {
   Text,
 } from 'react-native';
 
-import ContactTracing from '../'
+import ContactTracing, { ContactTracingStatus } from '../'
 
 export default () => {
-  const [state, setState] = useState(null);
+  const [state, setState] = useState(ContactTracingStatus.UNKNOWN);
 
   useEffect(() => {
     ContactTracing.start();
